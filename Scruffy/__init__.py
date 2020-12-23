@@ -16,8 +16,6 @@ TOKEN = environ.get("BOT_TOKEN")
 PREFIX = environ.get("PREFIX")
 BOT = commands.Bot(command_prefix=PREFIX)
 
-# Functions that need imports but not circular imports
-# TODO: move function to _Utility, with out the  with circular imports
 def _list_avaliable_cogs() -> list:
     _list = listdir("./Scruffy/Cogs")
     _avaliable_cogs = [
