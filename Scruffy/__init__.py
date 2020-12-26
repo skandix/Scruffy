@@ -18,6 +18,8 @@ SERVERNAME = environ.get("SERVERNAME")
 
 @BOT.event
 async def on_ready():
+    activity = discord.Activity(name="Futurama", type=discord.ActivityType.watching)
+    await BOT.change_presence(activity=activity)
     log.info(f"{BOT.user.name} is Ready!")
 
 

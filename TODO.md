@@ -1,0 +1,6 @@
+- [ ] Fix getting emoji id
+    - [ ] aswell setting then emojis on embeds.
+- [ ] creating easy methods for broadcasting into other channels, and looking up other channels in the server.
+- [ ] make it possible to edit prefix, and make it persistent.
+- [ ] how do i "real time update embed with emoji count :thinking:
+- [ ] get more motivation or atleast for the new year.
