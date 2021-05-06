@@ -33,22 +33,14 @@ class _Utility:
     def _json_pretty(self, data: dict) -> dict:
         return json.dumps(data, indent=4)
 
-    # TODO: What was the meaning with this ?
-    def access_control_list(self, roles: list) -> str:
-        ...
-
     def get_ip(self, domain: str) -> str:
         return socket.gethostbyname(domain)
 
     def trunk_output(self, output: str):
         return textwrap.shorten(output, width=97, placeholder=" }")
 
-    # TODO: misc bot_send to detect the type of text and split the length into multiple messages
     # TODO: create custom function for embeds
-    # TODO: find better way of trunking message.. this is hacky and shitty ghetto
     async def bot_send(self, ctx, data, lang="") -> str:
-        # ekkel funksjon...
-        trunk = 90
         if lang == "txt":
             await ctx.send(f"{data}")
 
@@ -56,18 +48,7 @@ class _Utility:
             await ctx.send(f"``{data}``")
 
         elif lang == "json":
-            if len(data) > trunk:
-                await ctx.send(
-                    f"```json\n{self.trunk_output(self._json_pretty(data))}\n```"
-                )
-
-            else:
                 await ctx.send(f"```json\n{(self._json_pretty(data))}\n```")
-        else:
-            try:
-                if len(data) > trunk:
-                    await ctx.send(f"```{lang}\n{self.trunk_output(data)}\n```")
-                await ctx.send(f"```{lang}\n{data}\n```")
 
-            except Exception as error:
-                await ctx.send(f"{error}")
+        else:
+            log.error(f'Please select one of the langs, {lang} is not supported')

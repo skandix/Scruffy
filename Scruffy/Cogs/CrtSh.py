@@ -49,11 +49,10 @@ class CrtSh(commands.Cog):
         url = f"https://crt.sh/json?q={domain}"
         for domain in requests.get(url).json():
             for u_domain in domain["name_value"].rsplit():
-                if u_domain not in _unique_domains and "*" not in u_domain:
+                if u_domain not in _unique_domains and not(u_domain.startswith('*')):
                     _unique_domains.append(u_domain)
 
         for _domain in _unique_domains:
-            if self.is_domain_alive(_domain) != False:
-                _alive_domains.append(_domain)
+            _alive_domains.append(_domain)
 
         await self.utility.bot_send(ctx, sorted(_alive_domains), lang="json")
