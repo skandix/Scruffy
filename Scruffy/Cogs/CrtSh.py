@@ -46,7 +46,7 @@ class CrtSh(commands.Cog):
 
         _unique_domains = []
         _alive_domains = []
-        url = f"https://crt.sh/json?q={domain}"
+        url = f"https://crt.sh/json?q={self.valid.domain(domain)}"
         for domain in requests.get(url).json():
             for u_domain in domain["name_value"].rsplit():
                 if u_domain not in _unique_domains and "*" not in u_domain:

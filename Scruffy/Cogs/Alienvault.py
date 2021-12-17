@@ -27,7 +27,7 @@ class Alienvault(commands.Cog):
         """
         _pointers = {}
         _response = self._get(
-            f"https://otx.alienvault.com/api/v1/indicators/domain/{domain}/passive_dns"
+            f"https://otx.alienvault.com/api/v1/indicators/domain/{self.valid.domain(domain)}/passive_dns"
         ).json()
 
         for api_response in dict(_response)["passive_dns"]:
